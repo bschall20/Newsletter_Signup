@@ -6,7 +6,8 @@ const https = require("https");
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 mailchimp.setConfig({
     //API KEY
-    apiKey: "a310a40b75890188e9c3be5ec6877b32-us21",
+    // apiKey: "a310a40b75890188e9c3be5ec6877b32-us21",
+    apiKey: "63748cb09e6723c97e61180237584115-us21",
     //API KEY PREFIX (THE SERVER)
     server: "us21"
 })
@@ -44,7 +45,8 @@ app.post("/", function (req, res) {
 
     const options = {
         method: "POST",
-        auth: "brennan1:a310a40b75890188e9c3be5ec6877b32-us21"
+        // auth: "brennan1:a310a40b75890188e9c3be5ec6877b32-us21"
+        auth: "brennan1:63748cb09e6723c97e61180237584115-us21"
     };
 
     const request = https.request(url, options, function (response) {
