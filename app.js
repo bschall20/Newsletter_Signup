@@ -1,3 +1,4 @@
+require('dotenv').config();
 const bodyParser = require("body-parser");
 const request = require("request");
 const express = require("express");
@@ -5,8 +6,7 @@ const https = require("https");
 
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 mailchimp.setConfig({
-    //API KEY
-    apiKey: "a310a40b75890188e9c3be5ec6877b32-us21",
+    apiKey: process.env.API_KEY,
     //API KEY PREFIX (THE SERVER)
     server: "us21"
 })
@@ -40,11 +40,12 @@ app.post("/", function (req, res) {
 
     const jsonData = JSON.stringify(data);
 
-    const url = "https://us21.api.mailchimp.com/3.0/lists/9f39466074";
+    const url = process.env.URL;
 
     const options = {
         method: "POST",
-        auth: "brennan1:a310a40b75890188e9c3be5ec6877b32-us21"
+        // auth: "brennan1:a310a40b75890188e9c3be5ec6877b32-us21"
+        auth: process.env.AUTH
     };
 
     const request = https.request(url, options, function (response) {
@@ -77,6 +78,7 @@ app.listen(process.env.PORT || 3000, function () {
 // //***********************MAILCHIMP***********************
 // //API KEY:
 // // a310a40b75890188e9c3be5ec6877b32-us21
+// new API key (12/07/2022): 63748cb09e6723c97e61180237584115-us21
 
 // //AUDIENCE ID?:
 // // 9f39466074
